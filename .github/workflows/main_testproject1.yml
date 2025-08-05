@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: windows-latest
     permissions:
-      contents: read # Required for actions/checkout
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
@@ -24,9 +24,11 @@ jobs:
       - name: Restore NuGet packages
         run: nuget restore
 
-      - name: Publish to folder
-        run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir=published
+      # Option 1: Using MSBuild Publish target
+      - name: Publish to folder with MSBuild
+        run: msbuild /nologo /verbosity:minimal /t:Publish /p:Configuration=Release /p:PublishDir=published\
 
+      # Optional: To verify published files exist
       - name: List published folder contents
         run: dir published
 
@@ -45,7 +47,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ASP-app
-      
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
