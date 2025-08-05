@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>MyAwesomeLibrary</id>
+    <version>1.0.0</version>
+    <authors>vimal</authors>
+    <owners>vimal</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/your/repo</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A simple and awesome C# math library</description>
+    <tags>math calculator library</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="13.0.1" />
+    </dependencies>
+  </metadata>
+</package>
