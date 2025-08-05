@@ -28,10 +28,6 @@ jobs:
       - name: Publish to folder with MSBuild
         run: msbuild /nologo /verbosity:minimal /t:Publish /p:Configuration=Release /p:PublishDir=published\
 
-      # Optional: To verify published files exist
-      - name: List published folder contents
-        run: dir published
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
@@ -56,3 +52,4 @@ jobs:
           slot-name: 'Production'
           package: ASP-app
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_85FB606879E44F36A6F945C2CC23D349 }}
+
